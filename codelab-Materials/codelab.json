@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2022-04-30T11:35:45Z",
+  "id": "codelab-Materials",
+  "duration": 0,
+  "title": "",
+  "authors": "bana7",
+  "summary": "webチーム開発手引書",
+  "source": "1OjAUXWJaP-iwo_4j8oPGhITAvPcgtvaoxKvTlsoXKmc",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/Aruminium/codelab_Materials",
+  "ga": "168837877",
+  "url": "codelab-Materials"
+}

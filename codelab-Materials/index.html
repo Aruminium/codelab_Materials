@@ -1,0 +1,267 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="168837877"
+                  id="codelab-Materials"
+                  title=""
+                  environment="web"
+                  feedback-link="https://github.com/Aruminium/codelab_Materials">
+    
+      <google-codelab-step label="Node.jsをインストール" duration="0">
+        <h2 is-upgraded><strong>Node.jsとは</strong></h2>
+<p class="image-container"><img style="width: 287.00px" src="img\\a8a5835a4c76235.png"></p>
+<p>Javascript実行環境です。</p>
+<p>ブラウザでしか使えなかったjavascriptだが、Node.jsを用いるとOSの機能が使える。つまりJavascriptの拡張版です</p>
+<p>例えばZoomやブラウザ版のDiscordもnode.jsを元に動いているぞ</p>
+<h2 is-upgraded><strong>サーバーサイドとは</strong></h2>
+<p>Webサイトの裏側の処理、Webページに必要な情報をデータベースから持ってきたり、</p>
+<p>Webページを生成するということを行います</p>
+<h2 is-upgraded><strong>フロントエンドとは</strong></h2>
+<p>よくフロントエンドとサーバーサイドは曖昧な方がいます。筆者もその一人でした。</p>
+<p>フロントエンドとはWebサイトの表側の処理を担当します。</p>
+<p>「CSSが...」とか「ここはh1タグで...」や「動的なサイトにしよう」とかはフロントエンドです。</p>
+<p>またフロントエンドではjavascriptがよく使われます。</p>
+<p>といっても実際は標準のjavascriptで書くのではなくVue.jsとかのフレームワーク、Reactなどのライブラリを使ってフロントエンドをつくっていきます</p>
+<h2 is-upgraded>インストール</h2>
+<h3 is-upgraded>Windows</h3>
+<ol type="1" start="1">
+<li><a href="https://nodejs.org/ja/" target="_blank">node.js</a>←をクリック、そしてLTS(長期サポート版)をダウンロード</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img\\2950699e256e73b.png"></p>
+<ol type="1" start="2">
+<li>ダウンロードファイルを実行してインストーラー起動</li>
+</ol>
+<p>基本的にNextを押すだけでよい</p>
+<p class="image-container"><img style="width: 601.70px" src="img\\f098d534a407167b.png"></p>
+<p class="image-container"><img style="width: 601.70px" src="img\\ff0a081bd409bbc0.png"></p>
+<p class="image-container"><img style="width: 601.70px" src="img\\c53404e7c5cdd4f0.png"></p>
+<p class="image-container"><img style="width: 601.70px" src="img\\1975ff9167002bf9.png"></p>
+<p class="image-container"><img style="width: 601.70px" src="img\\2319c95913d45eeb.png"></p>
+<p>チェックを外してNextを押す。「色々とインストールしますがよいですか？」と聞いている。後に必要になったら個別でインストールすれば良い。</p>
+<h3 is-upgraded><strong>mac</strong></h3>
+<p>windows版と同じ手順でインストールしても良いが、ここではhomebrewを用いた手順を解説する。</p>
+<h4 is-upgraded><strong>Homebrewインストール</strong></h4>
+<ol type="1" start="1">
+<li><a href="https://brew.sh/index_ja" target="_blank">Homebrew</a>をクリックする</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img\\3288d8fae630274f.png"></p>
+<p>クリックするとこのページに遷移されるそこで、</p>
+<p class="image-container"><img style="width: 601.70px" src="img\\847d38ceea3b93c4.png"></p>
+<p>の右のアイコンをクリックしてコピーする。</p>
+<ol type="1" start="2">
+<li>terminalを開いてペーストしてエンターキーでインストールされます</li>
+</ol>
+<h4 is-upgraded><strong>Nodebrewインストール</strong></h4>
+<p>nodebrewを利用するとnodejsのバージョン管理が便利になります。</p>
+<p>以後terminalでの操作の場合は&#34;$&#34;をつけます。($をつけたまま入力しないこと)</p>
+<pre>$ brew install nodebrew</pre>
+<p>でインストールされます</p>
+<pre>$ vi ~/.bash_profile</pre>
+<p>.bash_profileとかはお使いのターミナルによりますが、要はPathを通します</p>
+<pre>export PATH=$HOME/.nodebrew/current/bin:$PATH</pre>
+<p>※bashの場合です。</p>
+<p>ターミナルを再起動してから</p>
+<pre>$ nodebrew install-binary stable </pre>
+<p>で安定版(LTS)がインストールされます</p>
+<h3 is-upgraded><strong>(今後のため)npmとは</strong></h3>
+<p>npmとはnode.jsのパッケージを管理するシステムです。</p>
+<h4 is-upgraded><strong>パッケージとは</strong></h4>
+<p>モジュール(module)と呼ばれる、クラスや関数などのプログラムをまとめて機能するようにしたのがパッケージおよびライブラリと呼ばれる。</p>
+<p>web開発でnpm hogehoge、みたいな具合でパッケージを追加していくと思われますので補足として書きました。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="VSCodeインストール" duration="0">
+        <p>VSCodeはコードエディタやテキストエディタと呼ばれ、要するにプログラムを書いたり、html書いたりとか色々できるソフトウェアである。</p>
+<p>VSCodeはユーザ数や記事が多く問題が発生してもすぐに解決でき、また扱いやすいため導入する。</p>
+<ol type="1" start="1">
+<li><a href="https://code.visualstudio.com/download" target="_blank">VSCode</a>をクリック</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img\\8c48e0089a8adbf9.png"></p>
+<p>自分の環境に沿ってダウンロードしインストールしてほしい。</p>
+<p>基本的にはnextを押せば良い</p>
+<h2 is-upgraded><strong>拡張機能の追加</strong></h2>
+<p>VSCodeをメリットの1つとしてカスタマイズ性が非常に高い。</p>
+<p>カスタマイズを行うことによって自分好みのコードエディタにしよう</p>
+<p>拡張機能の追加VSCodeの画面左のタブの拡張機能(Extensions)からできるぞ</p>
+<ol type="1" start="1">
+<li><h3 is-upgraded><strong>日本語化</strong></h3>
+</li>
+</ol>
+<p>初期状態は英語になっているが英語体制のある方は導入しなくてもよい</p>
+<p class="image-container"><img style="width: 311.00px" src="img\\4672e676be47df20.png"></p>
+<p>一番上の Japanese Language Pac...をinstallする</p>
+<ol type="1" start="2">
+<li><h3 is-upgraded><strong>コード整形</strong></h3>
+</li>
+</ol>
+<p>次に導入するgit,githubにおいてソースコードの変更点、つまり差分が大事になってくる。</p>
+<p>そのため改行や、空白行の差分が入ると非常に困る。そこでチーム全員で同じコード整形ツールを用いれば余計な差分問題は抑えることができる。</p>
+<p class="image-container"><img style="width: 310.00px" src="img\\9c9f7140f99b5329.png"></p>
+<p>一番上のPrettier - Code formatterをinstallする。20Mインストールされている方であることを確認</p>
+<p>使い方は保存するときにコード整形が行われる。そのため特に使い方はないが、After deleyで保存する設定にしている人は、別途[ctrl + C]とかで保存してやる必要がある</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="GIthubアカウント作成" duration="0">
+        <p>チーム開発や、ソースコード管理を行うのであればGithubを使うことは避けられない。いまや学生でgithub使うことは当然のことなので、使ったことない人はこれを機に使えるようになろう。</p>
+<p class="image-container"><img style="width: 601.70px" src="img\\2106ce0d7ccfd2af.png"></p>
+<p><a href="https://github.co.jp/" target="_blank">Github</a>をクリックしてサインアップを行う。</p>
+<p>特に登録した時のメアドは事項で用いるため忘れないこと。</p>
+<p>学生メアドでサインアップするとgithubがpro版になる。(詳細は調べてほしい)</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="gitインストール" duration="0">
+        <p>先のGithubはこのgitのサービスに過ぎない。簡単に言うとgitコマンドはソースコード管理コマンドである。</p>
+<h2 is-upgraded><strong>Windows</strong></h2>
+<p><a href="https://zenn.dev/longbridge/articles/5d11bd51665dac" target="_blank">Windows10にGitをインストール</a>を参考にしてください</p>
+<h2 is-upgraded><strong>mac</strong></h2>
+<p>先で挙げたHomebrewを用います。</p>
+<pre>$ brew install git</pre>
+<p>で完了です。</p>
+<h2 is-upgraded><strong>初期設定(win/mac共通)</strong></h2>
+<pre>$ git config --global user.name [GitHubに登録したユーザー名]
+$ git config --global user.email [GitHubに登録したメールアドレス]</pre>
+<p>最近でgithubへpushするときなどにアクセストークンが必要になりました。</p>
+<p>アクセストークン(Https通信)でも良いんですが、毎回入力するのは億劫です。</p>
+<p>そこで<a href="https://qiita.com/shizuma/items/2b2f873a0034839e47ce" target="_blank">GitHubでssh接続する手順~公開鍵・秘密鍵の生成から~</a>を参考にssh通信にしてください</p>
+<p>sshにすると色々と便利ですよ</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="初めてのプルリクエストを出そう！" duration="0">
+        <p>略してプルリクに至るまでにいろいろと乗り越える必要がある。</p>
+<ol type="1" start="1">
+<li><h2 is-upgraded><strong>プロジェクトに招待する</strong></h2>
+</li>
+</ol>
+<p>プロジェクトに招待すると、pushやmergeができます。チーム開発するときは招待してあげましょう。参加者(コラボレーター)は自分のgithubのidを教えましょう</p>
+<p class="image-container"><img style="width: 288.00px" src="img\\394ebd61b833a3fa.png"></p>
+<p>この場合下のAruminiumを教えましょう</p>
+<p>レポジトリ作成者はそのレポジトリのSettingsをクリックしてCollaboratorsタブから招待しましょう。</p>
+<p class="image-container"><img style="width: 601.70px" src="img\\4b92d833307b9216.png"></p>
+<ol type="1" start="2">
+<li><h2 is-upgraded><strong>git clone</strong></h2>
+</li>
+</ol>
+<p>コラボレーターは自分の環境（ローカル環境）にソースコードを持ってくる必要があります。そこで活躍するのがgit cloneです。</p>
+<p>任意の場所で</p>
+<pre>$ git clone リポジトリのurl</pre>
+<p>とするとローカル環境にリポジトリ内容が来ます。</p>
+<pre>$ cd リポジトリ名</pre>
+<p>で準備は完了です。</p>
+<ol type="1" start="3">
+<li><h2 is-upgraded><strong>npm install</strong></h2>
+</li>
+</ol>
+<pre>$ npm install</pre>
+<p>とすると必要なパッケージがインストールされます。</p>
+<ol type="1" start="4">
+<li><h2 is-upgraded><strong>README.mdを編集しよう</strong></h2>
+</li>
+</ol>
+<p>手始めにREADME.mdを編集し、add,commit, pushすることで一連の流れを確認する。</p>
+<p>編集する前に必ずブランチを切ろう。ブランチを切ることでやり直したりできる。</p>
+<p>ここでは</p>
+<pre>$ git checkout -b discordの名前</pre>
+<p>でブランチを切ろう。</p>
+<p>ブランチを切ったらREADME.mdの末尾に</p>
+<pre>test dicordの名前</pre>
+<p>を追加しよう。</p>
+<ol type="1" start="5">
+<li><h2 is-upgraded><strong>Pushまで</strong></h2>
+</li>
+</ol>
+<p>add -&gt; commit -&gt; push の流れで進む</p>
+<pre>$ git add README.md</pre>
+<pre>$ git commit -m &#34;やったことを書く&#34;</pre>
+<pre>$ git push origin 先ほど作成したブランチ名</pre>
+<ol type="1" start="6">
+<li><h2 is-upgraded><strong>PRを出す</strong></h2>
+</li>
+</ol>
+<p>githubのレポジトリを見るとPRがだせるようになっているはずだ。</p>
+<p>PRテンプレートが設定されていればそれ通りに入力してPRを出す。</p>
+<p>PR -&gt; mergeというながれになるが、決して自分でmergeしないでほしい。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="使用技術" duration="0">
+        <ul>
+<li>React - ライブラリ</li>
+<li>Firebase - BaaS/MBaaS</li>
+<li>material-ui - デザインライブラリ</li>
+</ul>
+<p><a href="https://ja.reactjs.org/" target="_blank">React</a>のチュートリアルや<a href="https://mui.com/" target="_blank">MUI</a>をみて感覚を掴んでほしい。</p>
+<p>自分のものにするためには実際に書いた方が圧倒的に早い。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="まとめ" duration="0">
+        <p>web開発の環境構築を行ってきたが、1度構築できてしまえば、次からは楽になるので頑張ろう。</p>
+<p>web開発の第一の練習として自分のポートフォリオサイトを作るのが一番堅実であると思う（ただし筆者はまだ作ってない...）ともあれ、自分の作りたいものを作るのが一番の成長につながるのでクソアプリであっても作っていこう。</p>
+<h2 is-upgraded><strong>git まとめ</strong></h2>
+<ol type="1" start="1">
+<li>git clone</li>
+<li>npm install</li>
+<li>git checkout -b </li>
+<li>編集</li>
+<li>git add 編集したファイル</li>
+<li>git commit &#34;やったこと&#34;</li>
+<li>git push origin 作成したブランチ名</li>
+</ol>
+<p>またmergeされたファイルの差分を取り組むコマンドgit pullを絶対にわすれないでほしい。</p>
+<p>忘れるとエラーやコンフリクトの原因になる。</p>
+<p>補足：プログラミングにおける問題解決について述べる</p>
+<ol type="1" start="1">
+<li>エラーコードをググる</li>
+</ol>
+<p>だいたいこれで解決することが多い</p>
+<ol type="1" start="2">
+<li>タイポしていないか確認</li>
+</ol>
+<p>15分奮闘してもわからない場合はさっさと知ってそうな人に聞いてしまおう。</p>
+<p>・わからないことをすぐに聞いても、そもそも何が分からないのかが分からず、しかも他人に迷惑をかける。</p>
+<p>・わからないことをずっと自分で抱え込むと自分の時間を浪費するだけである。</p>
+<p>案外聞いたらすぐに解決することが多い。</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
